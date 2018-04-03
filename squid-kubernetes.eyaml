@@ -17,6 +17,7 @@ apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
   name: squid
+  namespace: squid
   labels:
     app: squid
     track: stable
