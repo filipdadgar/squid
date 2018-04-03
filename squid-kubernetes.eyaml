@@ -1,0 +1,38 @@
+---
+  kind: Service
+  apiVersion: v1
+  metadata:
+    name: squid-svc
+  spec:
+    selector:
+      app: squid
+    type: LoadBalancer
+    ports:
+    - name: squid
+      protocol: TCP
+      port: 3128
+      targetPort: 3128
+---
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: squid
+  labels:
+    app: squid
+    track: stable
+spec:
+  strategy:
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        name: squid
+        app: squid
+    spec:
+      containers:
+      - image: filipdadgar/squid
+        name: squid
+        ports:
+        - containerPort: 3128
+          name: squid
+          protocol: TCP
