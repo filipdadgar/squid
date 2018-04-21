@@ -2,7 +2,7 @@
   kind: Service
   apiVersion: v1
   metadata:
-    name: squid-svc
+    name: squid-svc1
   spec:
     selector:
       app: squid
@@ -16,7 +16,7 @@
 apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
-  name: squid
+  name: squid1
   namespace: squid
   labels:
     app: squid
